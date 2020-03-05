@@ -1,0 +1,22 @@
+{
+    "name": "parser-cli",
+    "version": "1.0.0",
+    "description": "Provides command line parsing of files.",
+    "main": "./bin/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/billie-rose/parser.git"
+    },
+    "author": "Billie Rose",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/billie-rose/parser/issues"
+    },
+    "homepage": "https://github.com/billie-rose/parser#readme",
+    "bin": {
+        "parse": "./bin/index.js"
+    }
+}
