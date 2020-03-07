@@ -1,0 +1,10 @@
+{
+    "properties": [
+        { "firstName": { "type": "string" } },
+        { "middleInitial": { "type": "string" } },
+        { "lastName": { "type": "string" } },
+        { "gender": { "type": "string" } },
+        { "favoriteColor": { "type": "string" } },
+        { "dob": { "type": "date" } }
+    ]
+}
