@@ -18,5 +18,8 @@
     "homepage": "https://github.com/billie-rose/parser#readme",
     "bin": {
         "parse": "./bin/index.js"
+    },
+    "dependencies": {
+        "@tyriar/fibonacci-heap": "^2.0.9"
     }
 }

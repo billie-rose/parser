@@ -1,22 +1,21 @@
 var { properties } = require('./model.json');
 
-// Some janky reflection going on here to avoid using string literals so that we can order fields
-// by their name the way we want to.
-// Theoretically, users would want an import and output formatted in the same way (hence using a JSON array
-// for properties), therefore this sort of thing wouldn't be needed. Theoretically.
+/**
+ * Some quick reflection going on here to avoid using string literals.
+ * We're doing it this way so that we can order some fields the way we want to,
+ * without needing to account any others which may be added later
+ */
 const fields = {};
+
+// Get the string literals for the properties (fields) defined in our json model
 const propertyKeys = properties.map(property => Object.keys(property)).flat();
 propertyKeys.forEach(fieldName => (fields[fieldName] = fieldName));
+const { lastName, firstName, middleInitial, gender, favoriteColor, dob } = fields; // prettier-ignore
 
-const {
-    lastName,
-    firstName,
-    middleInitial,
-    gender,
-    favoriteColor,
-    dob
-} = fields;
-
+/**
+ * @type {Array<string>}
+ * The default order that fields of this schema are imported
+ */
 const importFieldOrder = [
     lastName,
     firstName,
@@ -26,11 +25,18 @@ const importFieldOrder = [
     dob
 ];
 
-// If we do ever add new unmapped fields, we'll just append them onto our mappings
-// in the order they appear in the json model
+/**
+ * @type {Array<string>}
+ * The order that fields of this schema are exported
+ */
+const outputFieldOrder = [lastName, firstName, gender, dob, favoriteColor];
+
+// If we do ever add new fields, we'll just append them onto our mappings in the order
+// they appear in the json model
 propertyKeys.map(field => {
     if (importFieldOrder.indexOf(field) < 0) {
         importFieldOrder.push(field);
+        outputFieldOrder.push(field);
     }
 });
 
@@ -55,13 +61,18 @@ const spaceDelimitedFieldMapping = {
     )
 };
 
-const inputFieldMappingByDelimiter = {
+/**
+ * Lookup for the order in which fields for a schema should be parsed from data.
+ * The field order may change based on how the data is delimeted
+ * @type {{ delimeter: string, fieldMapping: Array<string> }}
+ */
+const inputFieldOrderByDelimiter = {
+    // We're assuming that the delimeter will always be a string, I'd prefer not to
+    // imagine what we'd have to do otherwise.
     '|': pipeDelimitedFieldMapping,
     ',': commaDelimitedFieldMapping,
     ' ': spaceDelimitedFieldMapping
 };
-
-const outputFieldMapping = [lastName, firstName, gender, dob, favoriteColor];
 
 function swapElements(arr, from, to) {
     var element = arr[from];
@@ -71,6 +82,6 @@ function swapElements(arr, from, to) {
 }
 
 module.exports = {
-    inputFieldMappingByDelimiter,
-    outputFieldMapping
+    inputFieldOrderByDelimiter,
+    outputFieldOrder
 };

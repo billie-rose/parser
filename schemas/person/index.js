@@ -1,18 +1,17 @@
-var {
-    person,
-    inputFieldMappingByDelimiter,
-    outputFieldMapping
-} = require('./config');
+const { inputFieldOrderByDelimiter, outputFieldOrder } = require('./config');
+const person = require('./model');
 
-// This is a more complicated example of a schema due to the delimiter reqs
-// Our parser would work with only a json file
+/**
+ * @type {{ model: any, delimeters: Array<string>, inputFieldOrder: {delimeter: string, fieldMappings: Array<string>}, outputFieldOrder: Array<string> }}
+ */
 const personSchema = {
     model: person,
-    delimeters: [Object.keys(inputFieldMappingByDelimiter)],
-    inputFieldMapping: inputFieldMappingByDelimiter,
-    outputFieldMapping
+    delimeters: [Object.keys(inputFieldOrderByDelimiter)],
+    inputFieldOrder: inputFieldOrderByDelimiter,
+    outputFieldOrder
 };
 
-console.log(personSchema);
-
+// We wouldn't normally need any of this. A simple JSON file would work
+// assuming a workflow where files are imported and exported in the same order
+// and with only one delimeter.
 module.exports = personSchema;
