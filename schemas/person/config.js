@@ -41,30 +41,27 @@ propertyKeys.map(field => {
 });
 
 // LastName | FirstName | MiddleInitial | Gender | FavoriteColor | DateOfBirth
-const pipeDelimitedFieldMapping = {
-    fieldOrder: importFieldOrder
-};
+const pipeDelimitedFieldMapping = [...importFieldOrder];
 
 // LastName, FirstName, Gender, FavoriteColor, DateOfBirth
-const commaDelimitedFieldMapping = {
-    // remove MiddleInitial
-    fieldOrder: [...importFieldOrder].filter(field => field != middleInitial)
-};
+const commaDelimitedFieldMapping = [...importFieldOrder].filter(
+    // Remove MiddleInitial
+    field => field != middleInitial
+);
 
 // LastName FirstName MiddleInitial Gender DateOfBirth FavoriteColor
-const spaceDelimitedFieldMapping = {
+const spaceDelimitedFieldMapping =
     // swap order of FavoriteColor w/ DateOfBirth
-    fieldOrder: swapElements(
+    swapElements(
         [...importFieldOrder],
         importFieldOrder.indexOf(favoriteColor),
         importFieldOrder.indexOf(dob)
-    )
-};
+    );
 
 /**
  * Lookup for the order in which fields for a schema should be parsed from data.
  * The field order may change based on how the data is delimeted
- * @type {{ delimeter: string, fieldMapping: Array<string> }}
+ * @type {{ delimeter: string, value: Array<string> }}
  */
 const inputFieldOrderByDelimiter = {
     // We're assuming that the delimeter will always be a string, I'd prefer not to
