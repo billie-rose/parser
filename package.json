@@ -20,6 +20,7 @@
         "parse": "./bin/index.js"
     },
     "dependencies": {
-        "@tyriar/fibonacci-heap": "^2.0.9"
+        "@tyriar/fibonacci-heap": "^2.0.9",
+        "fs-extra": "^8.1.0"
     }
 }
