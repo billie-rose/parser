@@ -1,9 +1,9 @@
-var { properties } = require('./model.json');
+var { properties, sortedOutputs } = require('./model.json');
 
 /**
  * Some quick reflection going on here to avoid using string literals.
  * We're doing it this way so that we can order some fields the way we want to,
- * without needing to account any others which may be added later
+ * without needing to account for any others which may be added later
  */
 const fields = {};
 
@@ -31,8 +31,7 @@ const importFieldOrder = [
  */
 const outputFieldOrder = [lastName, firstName, gender, dob, favoriteColor];
 
-// If we do ever add new fields, we'll just append them onto our mappings in the order
-// they appear in the json model
+// If we ever want to add new fields, we can just add them to the json file
 propertyKeys.map(field => {
     if (importFieldOrder.indexOf(field) < 0) {
         importFieldOrder.push(field);
@@ -59,8 +58,8 @@ const spaceDelimitedFieldMapping =
     );
 
 /**
- * Lookup for the order in which fields for a schema should be parsed from data.
- * The field order may change based on how the data is delimeted
+ * Lookup for the order of fields for this schema from an import
+ * The field order may change based on how the data is delimited (why? idk, probably to be mean)
  * @type {{ delimeter: string, value: Array<string> }}
  */
 const inputFieldOrderByDelimiter = {
@@ -80,5 +79,6 @@ function swapElements(arr, from, to) {
 
 module.exports = {
     inputFieldOrderByDelimiter,
-    outputFieldOrder
+    outputFieldOrder,
+    sortedOutputs
 };

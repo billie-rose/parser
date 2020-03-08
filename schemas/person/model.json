@@ -6,5 +6,16 @@
         { "gender": { "type": "string" } },
         { "favoriteColor": { "type": "string" } },
         { "dob": { "type": "date" } }
+    ],
+    "sortedOutputs": [
+        [
+            { "field": "gender", "direction": "asc" },
+            { "field": "lastName", "direction": "asc" }
+        ],
+        [
+            { "field": "dob", "direction": "asc" },
+            { "field": "lastName", "direction": "desc" }
+        ],
+        [{ "field": "lastName", "direction": "desc" }]
     ]
 }
