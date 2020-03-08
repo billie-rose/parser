@@ -1,5 +1,5 @@
 {
-    "properties": [
+    "fields": [
         { "firstName": { "type": "string" } },
         { "middleInitial": { "type": "string" } },
         { "lastName": { "type": "string" } },
@@ -7,7 +7,7 @@
         { "favoriteColor": { "type": "string" } },
         { "dob": { "type": "date" } }
     ],
-    "sortedOutputs": [
+    "sortDirections": [
         [
             { "field": "gender", "direction": "asc" },
             { "field": "lastName", "direction": "asc" }

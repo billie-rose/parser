@@ -1,14 +1,18 @@
-const { inputFieldOrderByDelimiter, outputFieldOrder } = require('./config');
+const {
+    sortDirections,
+    inputFieldOrderByDelimiterByDelimiter,
+    outputFieldOrder
+} = require('./config');
 const person = require('./model');
 
 /**
- * @type {{ model: any, delimeters: Array<string>, inputFieldOrder: {delimeter: string, value: Array<string>}, outputFieldOrder: Array<string> }}
+ * @type {{ model: any, delimeters: Array<string>, inputFieldOrderByDelimiter: {delimeter: string, value: Array<string>}, outputFieldOrder: Array<string> }}
  */
 const personSchema = {
     model: person,
-    delimeters: [Object.keys(inputFieldOrderByDelimiter)],
-    sortedOutputs,
-    inputFieldOrder: inputFieldOrderByDelimiter,
+    delimeters: [Object.keys(inputFieldOrderByDelimiterByDelimiter)],
+    sortDirections,
+    inputFieldOrderByDelimiterByDelimiter,
     outputFieldOrder
 };
 

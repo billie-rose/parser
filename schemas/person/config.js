@@ -1,16 +1,16 @@
-var { properties, sortedOutputs } = require('./model.json');
+var { fields, sortDirections } = require('./model.json');
 
 /**
  * Some quick reflection going on here to avoid using string literals.
  * We're doing it this way so that we can order some fields the way we want to,
  * without needing to account for any others which may be added later
  */
-const fields = {};
+const fieldNames = {};
 
-// Get the string literals for the properties (fields) defined in our json model
-const propertyKeys = properties.map(property => Object.keys(property)).flat();
-propertyKeys.forEach(fieldName => (fields[fieldName] = fieldName));
-const { lastName, firstName, middleInitial, gender, favoriteColor, dob } = fields; // prettier-ignore
+// Get the string literals for the fields (fields) defined in our json model
+const fieldKeys = fields.map(field => Object.keys(field)).flat();
+fieldKeys.forEach(fieldName => (fieldNames[fieldName] = fieldName));
+const { lastName, firstName, middleInitial, gender, favoriteColor, dob } = fieldNames; // prettier-ignore
 
 /**
  * @type {Array<string>}
@@ -32,7 +32,7 @@ const importFieldOrder = [
 const outputFieldOrder = [lastName, firstName, gender, dob, favoriteColor];
 
 // If we ever want to add new fields, we can just add them to the json file
-propertyKeys.map(field => {
+fieldKeys.map(field => {
     if (importFieldOrder.indexOf(field) < 0) {
         importFieldOrder.push(field);
         outputFieldOrder.push(field);
@@ -62,7 +62,7 @@ const spaceDelimitedFieldMapping =
  * The field order may change based on how the data is delimited (why? idk, probably to be mean)
  * @type {{ delimeter: string, value: Array<string> }}
  */
-const inputFieldOrderByDelimiter = {
+const inputFieldOrderByDelimiterByDelimiter = {
     // We're assuming that the delimeter will always be a string, I'd prefer not to
     // imagine what we'd have to do otherwise.
     '|': pipeDelimitedFieldMapping,
@@ -78,7 +78,7 @@ function swapElements(arr, from, to) {
 }
 
 module.exports = {
-    inputFieldOrderByDelimiter,
+    inputFieldOrderByDelimiterByDelimiter,
     outputFieldOrder,
-    sortedOutputs
+    sortDirections
 };
