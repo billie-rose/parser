@@ -4,7 +4,7 @@
     "description": "Provides command line parsing of files.",
     "main": "./bin/index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "mocha ./lib/test/**/*.js"
     },
     "repository": {
         "type": "git",
@@ -18,5 +18,8 @@
     "homepage": "https://github.com/billie-rose/parser#readme",
     "bin": {
         "parse": "./bin/index.js"
+    },
+    "devDependencies": {
+        "mocha": "^7.1.0"
     }
 }
