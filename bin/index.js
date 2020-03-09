@@ -12,7 +12,7 @@ ci = (commands = []) => {
             commands[0] != 'parse' ? help() : parse();
             break;
         default:
-        //TODO Eventual handling of other options as specified in commands.js
+        //TODO: Eventual handling of other options as specified in commands.js
     }
 };
 
