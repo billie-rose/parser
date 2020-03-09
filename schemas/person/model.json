@@ -14,7 +14,7 @@
         ],
         [
             { "field": "dob", "direction": "asc" },
-            { "field": "lastName", "direction": "desc" }
+            { "field": "lastName", "direction": "asc" }
         ],
         [{ "field": "lastName", "direction": "desc" }]
     ]
