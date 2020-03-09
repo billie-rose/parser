@@ -1,1 +1,8 @@
-{}
+{
+    "dataFormat": {
+        "gender": {
+            "format": ["Male", "Female"]
+        },
+        "dob": { "format": "M/D/YYYY" }
+    }
+}

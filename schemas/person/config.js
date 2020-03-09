@@ -62,7 +62,7 @@ const spaceDelimitedFieldMapping =
  * The field order may change based on how the data is delimited (why? idk, probably to be mean)
  * @type {{ delimeter: string, value: Array<string> }}
  */
-const inputFieldOrderByDelimiterByDelimiter = {
+const inputFieldOrderByDelimiter = {
     // We're assuming that the delimeter will always be a string, I'd prefer not to
     // imagine what we'd have to do otherwise.
     '|': pipeDelimitedFieldMapping,
@@ -78,7 +78,7 @@ function swapElements(arr, from, to) {
 }
 
 module.exports = {
-    inputFieldOrderByDelimiterByDelimiter,
+    inputFieldOrderByDelimiter,
     outputFieldOrder,
     sortDirections
 };

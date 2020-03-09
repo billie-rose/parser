@@ -1,6 +1,6 @@
 const {
     sortDirections,
-    inputFieldOrderByDelimiterByDelimiter,
+    inputFieldOrderByDelimiter,
     outputFieldOrder
 } = require('./config');
 const person = require('./model');
@@ -10,9 +10,9 @@ const person = require('./model');
  */
 const personSchema = {
     model: person,
-    delimeters: [Object.keys(inputFieldOrderByDelimiterByDelimiter)],
+    delimeters: [Object.keys(inputFieldOrderByDelimiter)],
     sortDirections,
-    inputFieldOrderByDelimiterByDelimiter,
+    inputFieldOrderByDelimiter,
     outputFieldOrder
 };
 
