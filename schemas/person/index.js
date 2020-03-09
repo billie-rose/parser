@@ -6,7 +6,16 @@ const {
 const person = require('./model');
 
 /**
- * @type {{ model: any, delimeters: Array<string>, inputFieldOrderByDelimiter: {delimeter: string, value: Array<string>}, outputFieldOrder: Array<string> }}
+ * This is a special case where we have a lot of unique things we want to do
+ * for this schema...ideally we wouldn't need to do this type of thing for
+ * any other type of schema, since we would assume that users are
+ * importing/exporting data in the same way with the same delim each time.
+ *
+ * We would want to create some sort of schema base object to do process more
+ * types of schemas for us in the future, if really needed
+ *
+ * @type {{ model: any, delimeters: Array<string>, inputFieldOrderByDelimiter: {delimeter: string, value: Array<string>},
+ * sortDirections: Array<{field:string, direction:string}>, outputFieldOrder: Array<string> }}
  */
 const personSchema = {
     model: person,
@@ -16,10 +25,4 @@ const personSchema = {
     outputFieldOrder
 };
 
-// We wouldn't normally need any of this. A simple JSON file with a
-// generic schema parser would work, but the custom requirements of this
-// project require adding this layer of functionality (namely, I wouldn't expect
-// users to be able to define 3+ different ways of sorting output in one import,
-// nor would I expect them to have differently delimeted files all in the same import folder)
-// but here we are
 module.exports = personSchema;
