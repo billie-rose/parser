@@ -17,3 +17,4 @@ ci = (commands = []) => {
 };
 
 ci(process.argv.slice(2));
+return;
