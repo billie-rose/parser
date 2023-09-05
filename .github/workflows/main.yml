@@ -24,5 +24,4 @@ jobs:
           cat ../Runbooks.md
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          repository: https://github.com/billie-rose/parser.wiki.git
           commit_message: Auto update markdown TOC
