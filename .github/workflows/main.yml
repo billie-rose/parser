@@ -14,6 +14,7 @@ jobs:
           path: runbooks
       - run: |
           pwd
+          ls
           cd runbooks
           curl https://raw.githubusercontent.com/ekalinin/github-markdown-toc/0.8.0/gh-md-toc -o gh-md-toc
           chmod a+x gh-md-toc
