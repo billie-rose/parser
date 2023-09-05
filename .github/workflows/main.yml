@@ -1,7 +1,6 @@
 name: 'CI - Runbook'
 on:
-  gollum:
-    paths: runbooks/*
+  gollum
 
 jobs:
   build-runbook-readme:
